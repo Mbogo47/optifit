@@ -1,0 +1,47 @@
+/* Trainer.css */
+.trainers-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* Person.css */
+
+.person-container {
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  box-shadow:var(--box-shadow);
+  padding: 20px;
+  margin-bottom: 20px;
+  width: calc(50% - 20px); 
+}
+
+.person-image {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.person-heading {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.person-position {
+  font-style: italic;
+  color: var(--light-grey);
+  margin-bottom: 5px;
+}
+
+.person-description {
+  font-size: 14px;
+  color: var(--light-color);
+}
+
+@media (max-width: 768px) {
+  .person-container {
+    width: 100%; 
+  }
+}

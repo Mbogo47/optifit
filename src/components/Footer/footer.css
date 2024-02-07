@@ -1,0 +1,56 @@
+@import url('../../App.css');
+
+.footer {
+    background-color: #f5f5f5;
+}
+
+.footer ul {
+    list-style-type: none;
+}
+
+.footer span {
+    font-size: medium;
+}
+
+.footer .class {
+    display: flex;
+}
+
+.media-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.media-icon {
+    height: 3rem;
+    width: 3rem;
+    color: var(--light-grey);
+    font-size: 1rem;
+    padding: 2px;
+    border: 0.2rem solid var(--light-grey);
+    border-radius: .5rem;
+    margin: .3rem;
+}
+
+.media-icon:hover {
+    background: var(--pink);
+    color: #fff;
+    box-shadow: var(--box-shadow);
+    border: var(--border);
+}
+
+.credit {
+    padding: 1rem;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--light-color);
+    border-top: .1rem solid rgba(0, 0, 0, .1);
+}
+
+.credit a {
+    color: var(--pink);
+    font-size: 1.5rem;
+}

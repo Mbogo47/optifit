@@ -1,0 +1,49 @@
+.contact-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--light-grey);
+}
+
+input[type='text'],
+input[type='email'],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: 'Nunito Sans', sans-serif; /* Use Nunito Sans font */
+}
+
+input[type='text']:focus,
+input[type='email']:focus,
+textarea:focus {
+  border-color: var(--pink);
+}
+
+
+textarea {
+  resize: vertical;
+}
+
+.submit-button {
+  background-color: var(--pink);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #c6244c;
+}
