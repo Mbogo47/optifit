@@ -22,7 +22,8 @@ const Services = () => {
             description="Join our energizing group fitness classes led by certified instructors in a supportive environment."
           />
           <Service
-            icon={<IoIosNutrition />}
+            icon={<IoIosNutrition />
+            }
             heading="Nutrition Consultation"
             description="Receive expert advice on nutrition and diet plans to optimize your health and fitness journey."
           />
