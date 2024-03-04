@@ -1,0 +1,38 @@
+p {
+  text-align: center;
+}
+
+.class {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 auto;
+  
+}
+
+.class-box {
+  background-color: #f9f9f9;
+  flex-basis: calc(50% - 20px);
+  border-radius: 8px;
+  padding: 20px;
+  margin: 10px; 
+  box-shadow: var(--box-shadow);
+  text-align: center;
+}
+
+.class-box h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.class-box p {
+  margin: 5px 0;
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 768px) {
+  .class {
+    flex: 1 1 100%; /* Changed flex-basis to 100% for smaller screens */
+    max-width: 100%;
+  }
+}

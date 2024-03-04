@@ -55,5 +55,35 @@ section {
   font-weight: 400;
   text-align: center;
   padding-bottom: 2rem;
+}
+
+.btn-primary{
+  background-color: var(--pink);
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-transform: uppercase;
+ 
+}
+
+.btn-primary:hover{
+  background-color: #A56272;
+}
+
+.btn-secondary{
+  background-color: #e5e5e5;
+  color: var(--light-color);
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-transform: uppercase;
+ 
+}
+
+.btn-secondary:hover{
+  background-color: var(--light-grey);
   
 }

@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./navbar.css";
+import { Link } from "react-router-dom";
+
+
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -124,6 +127,17 @@ const Navbar = () => {
         >
           Contact
         </a>
+        <button className="btn-primary" style={{marginRight: '10px'}}>
+            <span>Sign Up</span>
+          {/* <Link to="/signup">
+          </Link> */}
+        </button>
+        <button className="btn-secondary">
+            <span>Sign In</span>
+          {/* <Link to="/signin">
+          </Link> */}
+        </button>
+        
       </div>
     </div>
   );
