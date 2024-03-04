@@ -34,6 +34,12 @@ const Admin = () => {
                     <SubMenu label="Admin" icon={<FaBars />} className='menu'>
                         <MenuItem icon={<FaBars />} className='menu-item' component={<Link to="/admin/allproducts" />}>
                             </MenuItem>
+<MenuItem icon={<FaBars />} className='menu-item' component={<Link to="/admin/allproducts" />}>
+                            </MenuItem>
+                            <MenuItem icon={<FaBars />} className='menu-item' component={<Link to="/admin/allproducts" />}>
+                            </MenuItem><MenuItem icon={<FaBars />} className='menu-item' component={<Link to="/admin/allproducts" />}>
+                            </MenuItem>
+                        
                         </SubMenu>
                     </Menu>
                     </Sidebar>
