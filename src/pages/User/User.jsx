@@ -1,17 +1,12 @@
-import "./admin.css";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, MenuItem, Sidebar, SubMenu } from "react-pro-sidebar";
-import {
-  FaBars,
-  FaDumbbell,
-  FaPaintBrush,
-} from "react-icons/fa";
+import { FaBars, FaDumbbell, FaPaintBrush } from "react-icons/fa";
 import { IoMdPeople } from "react-icons/io";
 import { MdOutlinePayments } from "react-icons/md";
 import { SlPeople } from "react-icons/sl";
 
-const Admin = () => {
+const User = () => {
   const [collapsed, setCollapsed] = useState(false);
 
   const handleWindowResize = () => {
@@ -82,4 +77,4 @@ const Admin = () => {
     </>
   );
 };
-export default Admin;
+export default User;

@@ -6,23 +6,26 @@ import LandingPage from "./pages/LandingPage/LandingPage";
 import Signup from "./pages/Auth/Signup";
 import Signin from "./pages/Auth/Signin";
 import { RouterProvider } from "./context/RouterContext";
+import AdminCont from "./pages/Admin/AdminSidebar";
+import UserCont from "./pages/User/UserSidebar";
 
 function App() {
   return (
     <>
       {/* <RouterProvider> */}
       <Navbar />
-        <Router>
-          <Routes>
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/signin" element={<Signin />} />
-        
-          </Routes>
-        </Router>
-        {/* <LandingPage /> */}
+      <Router>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/signin" element={<Signin />} />
+          <Route path="/admin" element={<AdminCont />}></Route>
+          <Route path="/user" element={<UserCont />}></Route>
+        </Routes>
+      </Router>
+      {/* <LandingPage /> */}
 
-        <Footer />
+      <Footer />
       {/* </RouterProvider> */}
     </>
   );

@@ -1,0 +1,10 @@
+.admin{
+    margin-top: 4.8rem;
+}
+
+
+@media (max-width: 768px) {
+    .admin {
+        margin-top: 3.29rem;
+    }
+}
