@@ -1,40 +1,73 @@
-/* Form */
-form {
-  max-width: 400px;
-  margin: 5.5rem  auto 10px auto;
+.login-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-form form {
+  width: 400px;
   padding: 20px;
-  background-color: var(--pink);
-  border-radius: 10px;
-  box-shadow: var(--box-shadow);
+  border-radius: 8px;
 }
 
-label {
-  display: block;
-  margin-bottom: 5px;
-  color: #fff;
+.signup-image {
+  width: 50%;
+  /* margin-top: 70px; */
 }
 
-input {
+.signup-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+.signin-image {
+  width: 50%;
+  margin-top: 70px;
+}
+
+.signin-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+.login-form label {
+  font-weight: 200px;
+  color: var(light-grey);
+}
+
+.login-form input {
   width: 100%;
+  margin: 8px 0;
   padding: 10px;
-  margin-bottom: 15px;
-  border-radius: 5px;
+  border: 1px solid var(--pink);
+  border-radius: 4px;
 }
 
 
-span.account {
+
+.account {
   display: block;
-  margin-top: 15px;
   text-align: center;
-  color: var(--black);
+  margin-top: 10px;
 }
 
-span.account .link {
-  color: var(--light-grey);
-  text-decoration: none;
+.account .link {
   margin-left: 5px;
+  color: var(--pink);
 }
 
-span.account .link:hover {
+.account .link:hover {
+  color: #a56272;
   text-decoration: underline;
+}
+
+@media screen and (max-width: 768px) {
+  .login-form {
+    flex-direction: column;
+    margin-top: 10rem;
+  }
+  .login-form form {
+    margin-bottom: 8rem;
+  }
 }

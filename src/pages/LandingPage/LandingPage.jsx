@@ -8,7 +8,7 @@ import Trainers from "../../components/Trainer/Trainers"
 const LandingPage = () => {
     return (
         <>
-            <Home />
+            {/* <Home /> */}
             <Classes />
             <Schedule />
             <Trainers />

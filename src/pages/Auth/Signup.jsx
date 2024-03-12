@@ -1,58 +1,62 @@
-import './auth.css'
+import "./auth.css";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import * as yup from "yup";
+import signinpic  from "../../assets/signup.svg";
 
-const Signup = () => { 
-    // const navigate = useNavigate();
-      const schema = yup.object().shape({
-        userName: yup.string().required("Username is required"),
-        email: yup.string().required("Email is required"),
-        password: yup
-          .string()
-          .required("Password is required")
-          .matches(/[a-z]/, "Must contain at least one lowercase letter")
-          .matches(/[A-Z]/, "Must contain at least one uppercase letter")
-          .matches(/[0-9]/, "Must contain at least one number")
-          .matches(
-            /[^a-zA-Z0-9]/,
-            "Must contain at least one special character"
+const Signup = () => {
+  // const navigate = useNavigate();
+  const schema = yup.object().shape({
+    userName: yup.string().required("Username is required"),
+    email: yup.string().required("Email is required"),
+    password: yup
+      .string()
+      .required("Password is required")
+      .matches(/[a-z]/, "Must contain at least one lowercase letter")
+      .matches(/[A-Z]/, "Must contain at least one uppercase letter")
+      .matches(/[0-9]/, "Must contain at least one number")
+      .matches(/[^a-zA-Z0-9]/, "Must contain at least one special character")
+      .test(
+        "password",
+        "Password must be at least 8 characters long",
+        (value) =>
+          /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(
+            value
           )
-          .test(
-            "password",
-            "Password must be at least 8 characters long",
-            (value) =>
-              /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(
-                value
-              )
-          ),
-        confirmPassword: yup
-          .string()
-          .oneOf([yup.ref("password"), null], "Passwords must match"),
-      });
-    
-      const {
-        register,
-        handleSubmit,
-        formState: { errors },
-      } = useForm({
-        resolver: yupResolver(schema),
-      });
+      ),
+    confirmPassword: yup
+      .string()
+      .oneOf([yup.ref("password"), null], "Passwords must match"),
+  });
 
-      const notify = (errorMessage, toastId) => {
-        toast.error(errorMessage, { toastId });
-    };
-    
-    const onsubmit = async (data) => {
-        console.log(data);
-        // navigate('/login');
-        const { userName, email, password } = data;
-    };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
-    return (
+  const notify = (errorMessage, toastId) => {
+    toast.error(errorMessage, { toastId });
+  };
+
+  const onsubmit = async (data) => {
+    console.log(data);
+    // navigate('/login');
+    const { userName, email, password } = data;
+  };
+
+  return (
+    <div className="login-form">
+
+      <div className="signup-image">
+        <img src={signinpic} alt="signin svg" />
+      </div>
+
       <form onSubmit={handleSubmit(onsubmit)}>
         <label>Username</label>
         <input
@@ -60,8 +64,7 @@ const Signup = () => {
           placeholder="Enter your username"
           {...register("userName")}
         />
-
-        {errors.userName && notify(errors.userName.message, "userName-error")}
+        {errors.userName && notify(errors.userName.message, "username-error")}
 
         <label>Email</label>
         <input
@@ -80,8 +83,13 @@ const Signup = () => {
         {errors.password && notify(errors.password.message, "password-error")}
 
         <label>Confirm Password</label>
-          <input type="password" placeholder='Confirm your password' />
-          {errors.confirmPassword && notify(errors.confirmPassword.message, 'confirmPassword-error')}
+        <input
+          type="password"
+          placeholder="Confirm your password"
+          {...register("confirmPassword")}
+        />
+        {errors.confirmPassword &&
+          notify(errors.confirmPassword.message, "confirm-error")}
 
         <button className="btn-secondary">
           <span>Sign Up</span>
@@ -89,11 +97,12 @@ const Signup = () => {
 
         <span className="account">
           Have an account?
-          <Link to="/login" className="link">
+          <Link to="/signin" className="link">
             Log In
           </Link>
         </span>
       </form>
-    );
+    </div>
+  );
 };
 export default Signup;

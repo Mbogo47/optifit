@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import * as yup from "yup";
+import signinpic from "../../assets/login.svg";
 
 const Signin = () => {
   const navigate = useNavigate();
@@ -26,29 +27,33 @@ const Signin = () => {
           )
       ),
   });
-     const {
-       register,
-       handleSubmit,
-       formState: { errors },
-     } = useForm({
-       resolver: yupResolver(schema),
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
     //    defaultValues: defaultValues,
-     });
+  });
 
-     const notify = (errorMessage, toastId) => {
-       toast.error(errorMessage, { toastId });
-     };
+  const notify = (errorMessage, toastId) => {
+    toast.error(errorMessage, { toastId });
+  };
 
-     const onsubmit = async (data) => {
-       console.log(data);
-       const success = await loginUser(dispatch, data);
-       if (success) {
-         toast.success("Login Successful");
+  const onsubmit = async (data) => {
+    console.log(data);
+    const success = await loginUser(dispatch, data);
+    if (success) {
+      toast.success("Login Successful");
 
-        //  navigate("/products/women");
-       }
-    };
-    return (
+      //  navigate("/products/women");
+    }
+  };
+  return (
+    <div className="login-form">
+      <div className="signin-image">
+        <img src={signinpic} alt="signin svg" />
+      </div>
       <form onSubmit={handleSubmit(onsubmit)}>
         <label>Email</label>
         <input
@@ -77,6 +82,7 @@ const Signin = () => {
           </Link>
         </span>
       </form>
-    );
+    </div>
+  );
 };
 export default Signin;

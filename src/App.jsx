@@ -8,6 +8,7 @@ import Signin from "./pages/Auth/Signin";
 import { RouterProvider } from "./context/RouterContext";
 import AdminCont from "./pages/Admin/AdminSidebar";
 import UserCont from "./pages/User/UserSidebar";
+import { ToastContainer } from 'react-toastify'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/admin" element={<AdminCont />}></Route>
           <Route path="/user" element={<UserCont />}></Route>
         </Routes>
+        <ToastContainer />
       </Router>
       {/* <LandingPage /> */}
 
