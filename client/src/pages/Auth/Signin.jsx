@@ -5,12 +5,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import * as yup from "yup";
-import signinpic  from "../../assets/signup.svg";
+import signinpic from "../../assets/login.svg";
+import { useDispatch } from "react-redux";
 
-const Signup = () => {
-  // const navigate = useNavigate();
+const Signin = () => {
+
+   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  
   const schema = yup.object().shape({
-    userName: yup.string().required("Username is required"),
     email: yup.string().required("Email is required"),
     password: yup
       .string()
@@ -27,17 +30,14 @@ const Signup = () => {
             value
           )
       ),
-    confirmPassword: yup
-      .string()
-      .oneOf([yup.ref("password"), null], "Passwords must match"),
   });
-
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
+    //    defaultValues: defaultValues,
   });
 
   const notify = (errorMessage, toastId) => {
@@ -46,29 +46,22 @@ const Signup = () => {
 
   const onsubmit = async (data) => {
     console.log(data);
-    // navigate('/login');
-    const { userName, email, password } = data;
-  };
+    const success = await loginUser(dispatch, data);
+    if (success) {
+      toast.success("Login Successful");
 
+       navigate("/user");
+    }
+  };
   return (
     <div className="login-form">
-
-      <div className="signup-image">
+      <div className="signin-image">
         <img src={signinpic} alt="signin svg" />
       </div>
-
       <form onSubmit={handleSubmit(onsubmit)}>
-        <label>Username</label>
-        <input
-          type="text"
-          placeholder="Enter your username"
-          {...register("userName")}
-        />
-        {errors.userName && notify(errors.userName.message, "username-error")}
-
         <label>Email</label>
         <input
-          type="email"
+          type="text"
           placeholder="Enter your email"
           {...register("email")}
         />
@@ -82,27 +75,18 @@ const Signup = () => {
         />
         {errors.password && notify(errors.password.message, "password-error")}
 
-        <label>Confirm Password</label>
-        <input
-          type="password"
-          placeholder="Confirm your password"
-          {...register("confirmPassword")}
-        />
-        {errors.confirmPassword &&
-          notify(errors.confirmPassword.message, "confirm-error")}
-
         <button className="btn-secondary">
-          <span>Sign Up</span>
+          <span>Sign In</span>
         </button>
 
         <span className="account">
-          Have an account?
-          <Link to="/signin" className="link">
-            Log In
+          Don't have an account?
+          <Link to="/signup" className="link">
+            Sign up
           </Link>
         </span>
       </form>
     </div>
   );
 };
-export default Signup;
+export default Signin;

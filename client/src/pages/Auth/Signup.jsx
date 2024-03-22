@@ -5,11 +5,17 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import * as yup from "yup";
-import signinpic from "../../assets/login.svg";
+import signinpic from "../../assets/signup.svg";
+import { registerUser } from "../../redux/apiCall.js";
+import { useDispatch } from "react-redux";
 
-const Signin = () => {
+const Signup = () => {
+
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const schema = yup.object().shape({
+    userName: yup.string().required("Username is required"),
     email: yup.string().required("Email is required"),
     password: yup
       .string()
@@ -26,14 +32,17 @@ const Signin = () => {
             value
           )
       ),
+    confirmPassword: yup
+      .string()
+      .oneOf([yup.ref("password"), null], "Passwords must match"),
   });
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
-    //    defaultValues: defaultValues,
   });
 
   const notify = (errorMessage, toastId) => {
@@ -42,22 +51,39 @@ const Signin = () => {
 
   const onsubmit = async (data) => {
     console.log(data);
-    const success = await loginUser(dispatch, data);
-    if (success) {
-      toast.success("Login Successful");
-
-      //  navigate("/products/women");
-    }
+    navigate('/signin');
+    const { userName, email, password } = data;
+    
+     try {
+       await registerUser(dispatch, { userName, email, password });
+       console.log({ userName, email, password });
+       // toast.success('User registered successfully', 'signup-success')
+     } catch (err) {
+       const errorMessage =
+         err.response?.data?.message ||
+         "An error occurred while registering user";
+       console.log(err);
+     }
   };
+
   return (
     <div className="login-form">
-      <div className="signin-image">
+      <div className="signup-image">
         <img src={signinpic} alt="signin svg" />
       </div>
+
       <form onSubmit={handleSubmit(onsubmit)}>
-        <label>Email</label>
+        <label>Username</label>
         <input
           type="text"
+          placeholder="Enter your username"
+          {...register("userName")}
+        />
+        {errors.userName && notify(errors.userName.message, "username-error")}
+
+        <label>Email</label>
+        <input
+          type="email"
           placeholder="Enter your email"
           {...register("email")}
         />
@@ -71,18 +97,27 @@ const Signin = () => {
         />
         {errors.password && notify(errors.password.message, "password-error")}
 
+        <label>Confirm Password</label>
+        <input
+          type="password"
+          placeholder="Confirm your password"
+          {...register("confirmPassword")}
+        />
+        {errors.confirmPassword &&
+          notify(errors.confirmPassword.message, "confirm-error")}
+
         <button className="btn-secondary">
-          <span>Sign In</span>
+          <span>Sign Up</span>
         </button>
 
         <span className="account">
-          Don't have an account?
-          <Link to="/signup" className="link">
-            Sign up
+          Have an account?
+          <Link to="/signin" className="link">
+            Log In
           </Link>
         </span>
       </form>
     </div>
   );
 };
-export default Signin;
+export default Signup;
